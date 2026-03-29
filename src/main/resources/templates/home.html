@@ -1,0 +1,166 @@
+<!doctype html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title th:text="${appName}">App</title>
+    <meta name="description" th:content="${appDescription}" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        body {
+          font-family: 'Inter', sans-serif;
+          background: linear-gradient(135deg, #0f172a, #1e293b);
+          color: white;
+          text-align: center;
+        }
+
+        .container {
+          max-width: 700px; /* key for desktop centering */
+          margin: auto;
+          padding: 40px 20px;
+        }
+
+        /* ICON */
+        .icon {
+          width: 100px;
+          border-radius: 20px;
+        }
+
+        /* TITLE */
+        .title {
+          font-size: 32px;
+          font-weight: 600;
+          margin-top: 15px;
+        }
+
+        /* DESCRIPTION */
+        .desc {
+          margin-top: 10px;
+          color: #cbd5f5;
+          line-height: 1.6;
+        }
+
+        /* BUTTON */
+        .btn {
+          display: inline-block;
+          margin-top: 20px;
+          padding: 14px 24px;
+          border-radius: 10px;
+          background: #22c55e;
+          color: black;
+          text-decoration: none;
+          font-weight: 500;
+        }
+
+        /* HERO IMAGE */
+        .hero {
+          margin-top: 40px;
+        }
+
+        .hero img {
+          width: 100%;
+          border-radius: 16px;
+        }
+
+        /* SECTION TITLE */
+        .section-title {
+          margin-top: 60px;
+          margin-bottom: 15px;
+          font-size: 20px;
+          font-weight: 500;
+        }
+
+        /* SCREENSHOTS */
+        .scroll {
+          display: flex;
+          gap: 15px;
+          overflow-x: auto;
+          padding-bottom: 10px;
+        }
+
+        .scroll img {
+          height: 400px;
+          border-radius: 12px;
+        }
+
+        /* FOOTER */
+        .footer {
+          margin-top: 60px;
+          font-size: 14px;
+          color: #94a3b8;
+          line-height: 1.6;
+        }
+
+        /* MOBILE */
+        @media(max-width: 600px) {
+          .title {
+            font-size: 24px;
+          }
+
+          .scroll img {
+            height: 300px;
+          }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- ICON -->
+
+    <img class="icon" th:src="${appIcon} ?:@{/demo/app-icon.png}" alt="icon"/>
+
+    <!-- NAME -->
+
+    <div class="title" th:text="${appName}">App Name</div>
+
+    <!-- DESCRIPTION -->
+
+    <p class="desc" th:text="${appDescription}"></p>
+
+    <!-- DOWNLOAD -->
+
+    <a class="btn" th:href="${apkLink}">Download APK</a>
+
+    <!-- HERO IMAGE -->
+
+    <div class="hero" th:if="${heroImage != null}">
+        <img th:src="${heroImage} " alt="preview"/>
+    </div>
+
+    <!-- SCREENSHOTS -->
+
+    <div class="section-title">Screenshots</div>
+
+    <div class="scroll">
+        <img th:each="img : ${screenshots}" th:src="${img}" />
+
+        <img th:src="${heroImage} ?:@{/demo/screenshot-1.png} " alt="preview"/>
+        <img th:src="${heroImage} ?:@{/demo/screenshot-2.png} " alt="preview"/>
+        <img th:src="${heroImage} ?:@{/demo/screenshot-3.png} " alt="preview"/>
+
+
+
+    </div>
+
+    <!-- FOOTER -->
+
+    <div class="footer">
+        <p th:text="${developerName}">Developer Name</p>
+        <p th:text="${contactInfo}">Contact Info</p>
+    </div>
+
+</div>
+
+</body>
+</html>
