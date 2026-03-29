@@ -4,6 +4,7 @@ import com.appdeploy.fastdeploy.dto.AppCreationDto;
 import com.appdeploy.fastdeploy.dto.AppResponseDto;
 import com.appdeploy.fastdeploy.dto.AppUpdateDto;
 import com.appdeploy.fastdeploy.entity.App;
+import com.appdeploy.fastdeploy.exceptions.ProjectNotExistException;
 import com.appdeploy.fastdeploy.mapper.AppToAppResponseDtoMapper;
 import com.appdeploy.fastdeploy.repository.AppRepository;
 import jakarta.transaction.Transactional;
@@ -35,7 +36,7 @@ public class AppService {
     public AppResponseDto updateApp(AppUpdateDto appUpdateDto){
 
         App app = appRepository.findById(appUpdateDto.getId()).orElseThrow(()->
-                new IllegalArgumentException("No app found with supplied id !"));
+                new ProjectNotExistException("No project found with id"));
 
         app.setApkLink(appUpdateDto.getApkLink());
         app.setAppName(appUpdateDto.getAppName());
