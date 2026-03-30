@@ -11,7 +11,7 @@ public class ResponseHandler {
 
     public static ResponseEntity<?> builder(
             Object data,
-            String error,
+            Map<String,String> error,
             LocalDateTime localDateTime,
             HttpStatus httpStatus
     ){

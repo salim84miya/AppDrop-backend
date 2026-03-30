@@ -11,3 +11,7 @@ spring:
         format-sql: true
     hibernate:
       ddl-auto: create-drop
+
+cloudinary_cloud_name: ${cloud_name}
+cloudinary_api_key: ${cloudinary_api_key}
+cloudinary_api_secret: ${cloudinary_api_secret}

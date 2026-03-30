@@ -1,9 +1,11 @@
-package com.appdeploy.fastdeploy.dto;
+package com.appdeploy.fastdeploy.project.dto;
 
 import lombok.Data;
 
 @Data
-public class AppCreationDto {
+public class AppUpdateDto {
+
+    private Long id;
 
     private String appName;
 

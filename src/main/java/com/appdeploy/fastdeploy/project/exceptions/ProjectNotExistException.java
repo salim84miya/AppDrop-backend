@@ -1,4 +1,4 @@
-package com.appdeploy.fastdeploy.exceptions;
+package com.appdeploy.fastdeploy.project.exceptions;
 
 public class ProjectNotExistException  extends RuntimeException{
 

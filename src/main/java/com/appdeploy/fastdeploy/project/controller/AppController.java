@@ -1,9 +1,10 @@
-package com.appdeploy.fastdeploy.controller;
+package com.appdeploy.fastdeploy.project.controller;
 
-import com.appdeploy.fastdeploy.dto.AppCreationDto;
-import com.appdeploy.fastdeploy.dto.AppUpdateDto;
+import com.appdeploy.fastdeploy.project.dto.AppCreationDto;
+import com.appdeploy.fastdeploy.project.dto.AppUpdateDto;
 import com.appdeploy.fastdeploy.mapper.ResponseHandler;
-import com.appdeploy.fastdeploy.service.AppService;
+import com.appdeploy.fastdeploy.project.service.AppService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,7 @@ public class AppController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<?> createProject(@RequestBody AppCreationDto appCreationDto){
+    public ResponseEntity<?> createProject(@RequestBody @Valid AppCreationDto appCreationDto){
 
 
          var response = appService.createApp(appCreationDto);

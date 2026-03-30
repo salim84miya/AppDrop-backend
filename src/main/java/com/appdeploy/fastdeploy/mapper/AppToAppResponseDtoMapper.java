@@ -1,7 +1,7 @@
 package com.appdeploy.fastdeploy.mapper;
 
-import com.appdeploy.fastdeploy.dto.AppResponseDto;
-import com.appdeploy.fastdeploy.entity.App;
+import com.appdeploy.fastdeploy.project.dto.AppResponseDto;
+import com.appdeploy.fastdeploy.project.entity.App;
 
 public class AppToAppResponseDtoMapper {
 

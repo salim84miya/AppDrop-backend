@@ -1,4 +1,4 @@
-package com.appdeploy.fastdeploy.dto;
+package com.appdeploy.fastdeploy.project.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

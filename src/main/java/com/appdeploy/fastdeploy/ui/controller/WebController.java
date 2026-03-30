@@ -1,9 +1,8 @@
-package com.appdeploy.fastdeploy.controller;
+package com.appdeploy.fastdeploy.ui.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 import java.util.Map;

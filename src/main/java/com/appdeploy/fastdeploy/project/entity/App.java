@@ -1,4 +1,4 @@
-package com.appdeploy.fastdeploy.entity;
+package com.appdeploy.fastdeploy.project.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

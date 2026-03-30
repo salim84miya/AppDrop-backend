@@ -1,12 +1,12 @@
-package com.appdeploy.fastdeploy.service;
+package com.appdeploy.fastdeploy.project.service;
 
-import com.appdeploy.fastdeploy.dto.AppCreationDto;
-import com.appdeploy.fastdeploy.dto.AppResponseDto;
-import com.appdeploy.fastdeploy.dto.AppUpdateDto;
-import com.appdeploy.fastdeploy.entity.App;
-import com.appdeploy.fastdeploy.exceptions.ProjectNotExistException;
+import com.appdeploy.fastdeploy.project.dto.AppCreationDto;
+import com.appdeploy.fastdeploy.project.dto.AppResponseDto;
+import com.appdeploy.fastdeploy.project.dto.AppUpdateDto;
+import com.appdeploy.fastdeploy.project.entity.App;
+import com.appdeploy.fastdeploy.project.exceptions.ProjectNotExistException;
 import com.appdeploy.fastdeploy.mapper.AppToAppResponseDtoMapper;
-import com.appdeploy.fastdeploy.repository.AppRepository;
+import com.appdeploy.fastdeploy.project.repository.AppRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
