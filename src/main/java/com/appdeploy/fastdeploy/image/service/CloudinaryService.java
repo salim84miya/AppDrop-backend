@@ -1,5 +1,6 @@
 package com.appdeploy.fastdeploy.image.service;
 
+import com.appdeploy.fastdeploy.image.dto.SavedImageResponse;
 import com.cloudinary.Cloudinary;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -19,7 +20,7 @@ public class CloudinaryService {
     private final Cloudinary cloudinary;
     private Logger log = LoggerFactory.getLogger(CloudinaryService.class);
 
-    public String uploadFile(String folderName, MultipartFile file){
+    public SavedImageResponse uploadFile(String folderName, MultipartFile file){
 
 
         try{
@@ -33,11 +34,25 @@ public class CloudinaryService {
 
             String publicId = (String) uploadedFile.get("public_id");
 
-            return cloudinary.url().secure(true).generate(publicId);
+            String savedImageUrl = cloudinary.url().secure(true).generate(publicId);
+
+            return new SavedImageResponse(savedImageUrl,publicId);
 
         } catch (IOException e) {
             log.error("image upload failed {}",e.getLocalizedMessage());
             return null;
+        }
+
+    }
+
+
+    public void deleteImage(String publicId) {
+
+        try{
+            cloudinary.uploader().destroy(publicId,Map.of());
+        } catch (IOException e) {
+            log.error("image delete failed {}",e.getLocalizedMessage());
+
         }
 
     }
