@@ -10,7 +10,11 @@ import com.appdeploy.fastdeploy.image.repository.ImageRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -48,6 +52,19 @@ public class ImageService {
     }
 
     @Transactional
+    public List<Image> saveMultipleImages(MultipartFile[] files){
+
+        List<Image> projectImages = new ArrayList<>();
+
+        Arrays.stream(files).forEach(file->
+                projectImages.add(saveImage(new ImageModel(file.getName(),file)))
+                );
+
+        return projectImages;
+
+    }
+
+    @Transactional
     public void deleteImage(UUID id){
 
         Image image = imageRepository.findById(id).orElseThrow(()->
@@ -56,6 +73,13 @@ public class ImageService {
         cloudinaryService.deleteImage(image.getPublicId());
 
         imageRepository.delete(image);
+
+    }
+
+    @Transactional
+    public void allProjectImageDeletion(Long projectId){
+
+
 
     }
 }

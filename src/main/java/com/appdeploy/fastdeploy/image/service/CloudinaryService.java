@@ -27,7 +27,7 @@ public class CloudinaryService {
 
             Map<Object, Object> options = new HashMap<>();
 
-            options.put("folder", folderName);
+            options.put("folder","app "+folderName);
 
 
             Map uploadedFile = cloudinary.uploader().upload(file.getBytes(), options);
