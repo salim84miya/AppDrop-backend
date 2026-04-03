@@ -28,9 +28,14 @@ public class SecurityConfiguration {
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth->
-                auth.requestMatchers("/auth/**").permitAll()
-                        .anyRequest().authenticated())
+                auth
+                        .anyRequest().permitAll())
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+
+//        .requestMatchers("/auth/**").permitAll()
+//                .requestMatchers("/image/**").permitAll()
+//                .requestMatchers("/upload/**").permitAll()
+//                .requestMatchers("/screenshot/**").permitAll()
 
         return httpSecurity.build();
     }

@@ -1,6 +1,7 @@
 package com.appdeploy.fastdeploy.project.entity;
 
 import com.appdeploy.fastdeploy.image.entity.Image;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,7 +26,8 @@ public class App {
 
     private String apkLink;
 
-    @OneToMany
+    @OneToMany(mappedBy = "app")
+    @JsonIgnore
     private List<Image> imageList;
 
     @CreationTimestamp

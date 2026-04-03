@@ -65,4 +65,12 @@ public class AppService {
         return AppToAppResponseDtoMapper.mapResponse(app);
     }
 
+    public AppResponseDto fetchProjectByName(String appName){
+
+        App app = appRepository.findByAppName(appName).orElseThrow(()->
+                new IllegalArgumentException("No app found with supplied id !"));
+
+        return AppToAppResponseDtoMapper.mapResponse(app);
+    }
+
 }
