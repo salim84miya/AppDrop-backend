@@ -1,5 +1,6 @@
 package com.appdeploy.fastdeploy.project.service;
 
+import com.appdeploy.fastdeploy.image.service.ImageService;
 import com.appdeploy.fastdeploy.project.dto.AppCreationDto;
 import com.appdeploy.fastdeploy.project.dto.AppResponseDto;
 import com.appdeploy.fastdeploy.project.dto.AppUpdateDto;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 public class AppService {
 
     private final AppRepository appRepository;
+    private final ImageService imageService;
 
     @Transactional
     public AppResponseDto createApp(AppCreationDto appDto){
@@ -53,6 +55,9 @@ public class AppService {
 
         App app = appRepository.findById(id).orElseThrow(()->
                 new IllegalArgumentException("No app found with supplied id !"));
+
+
+        imageService.allProjectImageDeletion(app.getId());
 
         appRepository.delete(app);
     }

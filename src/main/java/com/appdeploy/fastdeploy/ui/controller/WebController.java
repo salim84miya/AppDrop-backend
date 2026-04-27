@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class WebController {
@@ -29,8 +28,6 @@ public class WebController {
 
         AppResponseDto app = appService.fetchProjectByName(appName);
 
-//        Image icon = imageService.getImageIcon(app.getId());
-
         List<Image> screenshots = imageService.getImageScreenshots(app.getId());
 
         List<String> screenshotUrls = new ArrayList<>();
@@ -46,15 +43,6 @@ public class WebController {
         model.addAttribute("screenshots", screenshotUrls);
         model.addAttribute("developerName", "Salim");
         model.addAttribute("githubLink", "https://github.com/...");
-
-
-//        model.addAttribute("appName", "My App");
-//        model.addAttribute("appDescription", "This is my app");
-//        model.addAttribute("apkLink", "https://example.com/app.apk");
-//        model.addAttribute("heroImage", "https://...");
-//        model.addAttribute("screenshots", List.of("url1", "url2"));
-//        model.addAttribute("developerName", "Salim");
-//        model.addAttribute("githubLink", "https://github.com/...");
 
         return "home";
 

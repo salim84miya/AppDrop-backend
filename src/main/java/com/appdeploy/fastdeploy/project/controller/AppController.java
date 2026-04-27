@@ -39,6 +39,24 @@ public class AppController {
         return ResponseHandler.builder(response,null, LocalDateTime.now(), HttpStatus.OK);
     }
 
+    @DeleteMapping("/delete/{AppId}")
+    public ResponseEntity<?> deleteProject(@PathVariable(name = "AppId") Long appId){
+
+        appService.deleteApp(appId);
+
+        String message = "App with id "+appId+" deleted Successfully";
+
+        return ResponseHandler.builder(message,null,LocalDateTime.now(),HttpStatus.OK);
+
+    }
+
+    @GetMapping("/fetch/{id}")
+    public ResponseEntity<?> fetchProject(@PathVariable(name = "id") Long id){
+
+        var response = appService.fetchProject(id);
+
+        return ResponseHandler.builder(response,null,LocalDateTime.now(),HttpStatus.OK);
+    }
 
 
 }
