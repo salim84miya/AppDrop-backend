@@ -1,19 +1,3 @@
 spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/appdrop
-    username: ${username}
-    password: ${password}
-
-  jpa:
-    show-sql: true
-    properties:
-      hibernate:
-        format-sql: true
-    hibernate:
-      ddl-auto: create-drop
-
-cloudinary_cloud_name: ${cloud_name}
-cloudinary_api_key: ${cloudinary_api_key}
-cloudinary_api_secret: ${cloudinary_api_secret}
-
-jwt_secret_key: ${jwt_secret_key}
+  profiles:
+    active: prod

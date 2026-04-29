@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: ${database_url_prod}
+    username: ${database_username_prod}
+    password: ${database_password_prod}
+
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format-sql: true
+    hibernate:
+      ddl-auto: create-drop
+
+cloudinary_cloud_name: ${cloud_name}
+cloudinary_api_key: ${cloudinary_api_key}
+cloudinary_api_secret: ${cloudinary_api_secret}
+
+jwt_secret_key: ${jwt_secret_key}
