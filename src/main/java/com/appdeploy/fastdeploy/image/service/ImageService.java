@@ -128,24 +128,27 @@ public class ImageService {
     }
 
     @Transactional
-    public void deleteImage(UUID id){
+    public void deleteIconImage(Long projectId){
 
-        Image image = imageRepository.findById(id).orElseThrow(()->
-                new IllegalArgumentException("No image found"));
+        Image apkIcon = imageRepository.findIconByApp(projectId,ImageType.ICON.toString())
+                .orElseThrow(()->new IllegalArgumentException("No images found"));
 
-        cloudinaryService.deleteImage(image.getPublicId());
+//        Image image = imageRepository.findById(id).orElseThrow(()->
+//                new IllegalArgumentException("No image found"));
 
-        imageRepository.delete(image);
+        cloudinaryService.deleteImage(apkIcon.getPublicId());
+
+        imageRepository.delete(apkIcon);
 
     }
 
     @Transactional
-    public void allProjectImageDeletion(Long projectId){
+    public void allProjectScreenshotImageDeletion(Long projectId){
 
-        List<Image> apkImages = imageRepository.findImageByAppId(projectId,ImageType.SCREENSHOT.toString())
+        List<Image> apkScreenshots = imageRepository.findImageByAppId(projectId,ImageType.SCREENSHOT.toString())
                 .orElseThrow(()->new IllegalArgumentException("No images found"));
 
-        apkImages.forEach(image -> {
+        apkScreenshots.forEach(image -> {
 
             cloudinaryService.deleteImage(image.getPublicId());
 
@@ -153,6 +156,12 @@ public class ImageService {
 
         });
 
+    }
+
+    @Transactional
+    public void allProjectImageDelete(Long projectId){
+        deleteIconImage(projectId);
+        allProjectScreenshotImageDeletion(projectId);
     }
 
     public Image getImageIcon(Long projectId){

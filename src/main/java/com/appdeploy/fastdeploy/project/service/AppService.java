@@ -57,7 +57,7 @@ public class AppService {
                 new IllegalArgumentException("No app found with supplied id !"));
 
 
-        imageService.allProjectImageDeletion(app.getId());
+        imageService.allProjectImageDelete(id);
 
         appRepository.delete(app);
     }

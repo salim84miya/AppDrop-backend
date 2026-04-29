@@ -54,14 +54,14 @@ public class ImageController {
 
     }
 
-    @DeleteMapping("/delete")
-    public void deleteFile(UUID id){
-        imageService.deleteImage(id);
+    @DeleteMapping("/delete/icon/{id}")
+    public void deleteIcon(@PathVariable Long id){
+        imageService.deleteIconImage(id);
     }
 
-    @DeleteMapping("/deleteAllImage/{id}")
-    public void deleteAllAppImage(@PathVariable(value = "id") Long projectId){
-        imageService.allProjectImageDeletion(projectId);
+    @DeleteMapping("/delete/screenshot/{id}")
+    public void deleteAppScreenshotImage(@PathVariable(value = "id") Long projectId){
+        imageService.allProjectScreenshotImageDeletion(projectId);
     }
 
     @GetMapping("/Icon/{id}")
