@@ -6,7 +6,7 @@ An end-to-end backend system that allows developers to **generate, preview, and 
 
 ## 🌟 Live Demo
 
-👉 [Live Application](YOUR_DEPLOYED_LINK_HERE)
+👉 [Live Application](https://appdrop.onrender.com)
 
 ---
 
@@ -121,7 +121,7 @@ Generated Landing Page (Preview / Publish)
 ### Create App
 
 ```
-POST /projects
+POST /project/create
 ```
 
 ---
@@ -129,7 +129,7 @@ POST /projects
 ### Upload Icon
 
 ```
-POST /projects/{id}/icon
+POST /image/upload/icon
 ```
 
 ---
@@ -137,15 +137,7 @@ POST /projects/{id}/icon
 ### Upload Screenshots
 
 ```
-POST /projects/{id}/screenshots
-```
-
----
-
-### Preview App
-
-```
-GET /preview/{id}
+POST /image/upload/screenshot/{id}
 ```
 
 ---
@@ -153,7 +145,7 @@ GET /preview/{id}
 ### Public App Page
 
 ```
-GET /app/{slug}
+GET /home/{app-name}
 ```
 
 ---
@@ -165,7 +157,7 @@ GET /app/{slug}
 ### 🥇 1. Clone Repository
 
 ```
-git clone https://github.com/YOUR_USERNAME/AppLaunch.git
+git clone https://github.com/salim84miya/AppDrop-backend.git
 cd applaunch
 ```
 
@@ -175,17 +167,17 @@ cd applaunch
 
 ```
 # Cloudinary
-cloudinary.cloud-name=<your-cloud-name>
-cloudinary.api-key=<your-api-key>
-cloudinary.api-secret=<your-api-secret>
+cloud_name  = <your-cloud-name>
+cloudinary_api_key  = <your-api-key>
+cloudinary_api_secret= <your-api-secret>
 
 # Database
-SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/applaunch
-SPRING_DATASOURCE_USERNAME=postgres
-SPRING_DATASOURCE_PASSWORD=yourpassword
+database_url=db-url
+username=db-username
+password=db-password
 
 # JWT
-jwt-security-key=<256-bit-secret>
+jwt_security_key=<256-bit-secret>
 ```
 
 ---
@@ -203,7 +195,7 @@ jwt-security-key=<256-bit-secret>
 ### Build Image
 
 ```
-docker build -t applaunch .
+docker build -t appdrop .
 ```
 
 ---
@@ -212,14 +204,16 @@ docker build -t applaunch .
 
 ```
 docker run -p 8080:8080 \
--e cloudinary.cloud-name=<name> \
--e cloudinary.api-key=<key> \
--e cloudinary.api-secret=<secret> \
--e SPRING_DATASOURCE_URL=<db-url> \
--e SPRING_DATASOURCE_USERNAME=<db-user> \
--e SPRING_DATASOURCE_PASSWORD=<db-pass> \
--e jwt-security-key=<jwt-key> \
-applaunch
+-e active_profile=dev \
+-e database_url=<db-url> \
+-e username=<db-user> \
+-e password=<db-pass> \
+-e cloud_name=<name> \
+-e cloudinary_api_key=<key> \
+-e cloudinary_api_secret=<secret> \
+-e jwt_secret_key=<256-bit-alpha-numeric-key> \
+--name <container-name> \
+appdrop:latest
 ```
 
 ---
