@@ -6,7 +6,7 @@ An end-to-end backend system that allows developers to **generate, preview, and 
 
 ## 🌟 Live Demo
 
-👉 [Live Application](https://appdrop.onrender.com)
+👉 [Live Application](https://appdrop.onrender.com/swagger-ui/index.html)
 
 ---
 
